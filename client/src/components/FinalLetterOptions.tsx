@@ -41,9 +41,6 @@ export const FinalLetterDisplay = ({ content }: Props) => {
   return (
     <Box>
       <FinalLetterPaper>
-        <Typography variant="h6" gutterBottom sx={{ fontWeight: 700 }}>
-          Your Custom Cover Letter
-        </Typography>
         <Typography variant="body1" component="div">
           {content}
         </Typography>

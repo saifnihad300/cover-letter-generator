@@ -27,14 +27,14 @@ export const ResumeInput = ({ value, onChange }: Props) => (
     <StyledTextField
       fullWidth
       multiline
-      minRows={8}
-      maxRows={12}
+      minRows={12}
+      maxRows={20}
       variant="outlined"
       placeholder="Paste your resume here..."
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
-    <Typography variant="caption" color="textSecondary">
+    <Typography variant="caption" sx={{color: 'green'}}>
       We'll use this to personalize your cover letter.
     </Typography>
   </Box>

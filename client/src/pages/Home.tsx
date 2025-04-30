@@ -12,15 +12,19 @@ import {
   CircularProgress,
   Typography,
   Paper,
+  Container,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import { HeaderBar } from "../components/Headerbar"; 
 
-const StyledContainer = styled(Box)(({ theme }) => ({
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: theme.spacing(3),
+const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center", // Center horizontally
+  justifyContent: "center", // Center vertically
+  minHeight: "calc(100vh - 64px)", // Account for header height
+  padding: theme.spacing(3),
+  marginTop: "64px", // Space for fixed header
 }));
 
 const InputSection = styled(Paper)(({ theme }) => ({
@@ -28,6 +32,8 @@ const InputSection = styled(Paper)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   borderRadius: "12px",
   boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+  width: "100%", // Full width of container
+  maxWidth: "800px", // Constrain maximum width
 }));
 
 const ActionButton = styled(Button)(({ theme }) => ({
@@ -87,28 +93,32 @@ export const Home = () => {
   };
 
   return (
-    <StyledContainer>
-      <Typography
-        variant="h4"
-        component="h1"
-        gutterBottom
-        sx={{ fontWeight: 700, color: "primary.main" }}
-      >
-        Cover Letter Generator
-      </Typography>
-
+    <>
+    <HeaderBar/>
+    <StyledContainer maxWidth='lg'>
       {step === "input" && (
         <InputSection>
-          <Typography variant="h6" gutterBottom sx={{ mb: 3 }}>
+          <Typography variant="h6" gutterBottom sx={{ mb: 3, textAlign: "center", fontWeight: 600}}>
             Enter your details
           </Typography>
-          <Box display="flex" flexDirection="column" gap={4}>
+          <Box 
+              display="flex" 
+              flexDirection="column" 
+              gap={4}
+              alignItems="center" // Center children horizontally
+            >
+            <Box sx={{width: "100%", maxWidth: "600px"}}>
             <JobDescriptionInput
               value={jobDescription}
               onChange={setJobDescription}
             />
-            <ResumeInput value={resume} onChange={setResume} />
-            <Box display="flex" justifyContent="flex-end">
+          </Box>
+
+            <Box sx={{ width: "100%", maxWidth: "600px" }}> {/* Constrain input width */}
+                <ResumeInput value={resume} onChange={setResume} />
+            </Box>
+
+            <Box display="flex" justifyContent="center" width="100%">
               <ActionButton
                 variant="contained"
                 color="primary"
@@ -141,11 +151,13 @@ export const Home = () => {
               Start Over
             </ActionButton>
           </Box>
-          <CoverLetterOptions
-            templates={templates}
-            onSelect={handleSelectTemplate}
-            loading={loading}
-          />
+          <Box display="flex" justifyContent="center"> {/* Center templates */}
+              <CoverLetterOptions
+                templates={templates}
+                onSelect={handleSelectTemplate}
+                loading={loading}
+              />
+          </Box>
         </InputSection>
       )}
 
@@ -162,9 +174,12 @@ export const Home = () => {
               Create Another
             </ActionButton>
           </Box>
-          <FinalLetterDisplay content={finalLetter} />
+          <Box display="flex" justifyContent="center"> {/* Center final letter */}
+              <FinalLetterDisplay content={finalLetter} />
+          </Box>
         </InputSection>
       )}
     </StyledContainer>
+    </>
   );
 };

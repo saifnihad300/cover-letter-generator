@@ -27,14 +27,14 @@ export const JobDescriptionInput = ({ value, onChange }: Props) => (
     <StyledTextField
       fullWidth
       multiline
-      minRows={8}
-      maxRows={12}
+      minRows={3}
+      maxRows={7}
       variant="outlined"
       placeholder="Paste the job description here..."
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
-    <Typography variant="caption" color="textSecondary">
+    <Typography variant="caption" sx={{color: 'green'}} >
       The more details you provide, the better the results will be.
     </Typography>
   </Box>

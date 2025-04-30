@@ -29,7 +29,7 @@ const TemplateContent = styled(Box)(({ theme }) => ({
 
 export const CoverLetterOptions = ({ templates, onSelect, loading }: Props) => (
   <Box>
-    <Typography variant="body1" color="green" gutterBottom>
+    <Typography variant="body1" color="textSecondary" gutterBottom>
       We've generated {templates.length} personalized cover letters for you:
     </Typography>
     

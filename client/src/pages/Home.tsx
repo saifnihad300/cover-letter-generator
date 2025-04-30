@@ -146,7 +146,7 @@ export const Home = () => {
             alignItems="center"
             mb={3}
           >
-            <Typography variant="h6" fontWeight={400} sx={{color: 'blue'}}>Choose a template</Typography>
+            <Typography variant="h6" fontWeight={400}>Choose a template</Typography>
             <ActionButton variant="outlined" onClick={handleReset}>
               Start Over
             </ActionButton>

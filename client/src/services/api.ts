@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GenerateRequest, FinalizeRequest } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'https://cover-letter-generator-3q4x.onrender.com';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://cover-letter-generator-app-ra8w.onrender.com';
 
 export const generateTemplates = async (data: GenerateRequest) => {
   const res = await axios.post(`${API_BASE}/generate`, data);
